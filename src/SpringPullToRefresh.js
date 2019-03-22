@@ -13,7 +13,7 @@ const { height } = Dimensions.get("window");
 export class SpringPullToRefresh extends React.Component {
     static propTypes = {
         /* STYLE */
-        height: PropTypes.number,
+        height: PropTypes.number, //TODO: provide default value
         backgroundColor: PropTypes.string,
         textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 
@@ -68,7 +68,7 @@ export class SpringPullToRefresh extends React.Component {
     };
 
     getMaxHeight = () => {
-        return this.props.maxHeight;
+        return this.props.maxHeight; //TODO: this prop is not required, so...
     };
 
     getDraggingSpeed = () => {
@@ -167,7 +167,7 @@ export class SpringPullToRefresh extends React.Component {
                 testID={"ptr-header-container"}
                 style={{height: this.state.height, justifyContent: "flex-end", backgroundColor: this.props.backgroundColor, paddingBottom: 10}}>
                 <ActivityIndicator color={white} testID={"ptr-activity-indicator"} style={{opacity: this.props.refreshing ? 1 : 0, paddingBottom: 10}}/>
-                {
+                { /*TODO: activity indicator's color should be customizable*/
                     !this.props.refreshing &&
                     <View>
                         <Animated.View

@@ -1,7 +1,7 @@
 import {View} from "react-native";
 import React from "react";
 import renderer from "react-test-renderer";
-import SpringPullToRefresh from "../SpringPullToRefresh";
+import SpringPullToRefresh from "../src/SpringPullToRefresh";
 import {expectNotToFindByProps, randomNumber} from "./utils/utils";
 import {lorem} from "faker";
 import {eventScrollToBottom, eventScrollToTop} from "./factories/factories";
