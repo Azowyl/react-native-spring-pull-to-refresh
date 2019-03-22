@@ -61,6 +61,7 @@ export class SpringPullToRefresh extends React.Component {
 
     componentDidMount = () => {
         this.state.height.setValue(this.props.height);
+        this.setState({enoughElementsToScroll: this.props.data.length > 0})
     };
 
     getHeight = () => {

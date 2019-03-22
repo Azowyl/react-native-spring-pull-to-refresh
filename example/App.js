@@ -7,7 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import SpringPullToRefresh from "react-native-spring-pull-to-refresh";
 
 const instructions = Platform.select({
@@ -22,7 +22,6 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello</Text>
         <SpringPullToRefresh
             initialText={"Pull Me!"}
             releaseText={"Release Me!"}
@@ -34,6 +33,7 @@ export default class App extends Component<Props> {
             height={50}
             maxHeight={150}
             backgroundColor={"#000000"}
+            draggingSpeed={30}
         />
       </View>
     );
