@@ -1,6 +1,3 @@
-
-import { NativeModules } from "react-native";
-
-const { SpringPullToRefresh } = NativeModules;
+import {SpringPullToRefresh} from "./src/SpringPullToRefresh";
 
 export default SpringPullToRefresh;

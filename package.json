@@ -1,6 +1,6 @@
 {
   "name": "react-native-spring-pull-to-refresh",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
@@ -9,7 +9,10 @@
     "android": "react-native run-android"
   },
   "dependencies": {
-    "react": "16.8.3",
+    "prop-types": "^15.7.2"
+  },
+  "peerDependencies": {
+    "react": ">16.0 || <17.0",
     "react-native": "0.59.1"
   },
   "devDependencies": {
@@ -26,10 +29,26 @@
     "faker": "^4.1.0",
     "jest": "^24.5.0",
     "metro-react-native-babel-preset": "^0.53.1",
-    "prop-types": "^15.7.2",
-    "react-test-renderer": "16.8.3"
+    "react-test-renderer": "16.8.3",
+    "react": ">16.0 || <17.0",
+    "react-native": "0.59.1"
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "description": "a spring like effect pull to refresh component",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azowyl/react-native-spring-pull-to-refresh.git"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "Azowyl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Azowyl/react-native-spring-pull-to-refresh/issues"
+  },
+  "homepage": "https://github.com/Azowyl/react-native-spring-pull-to-refresh#readme"
 }
