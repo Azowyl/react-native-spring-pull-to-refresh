@@ -48,6 +48,7 @@ export class SpringPullToRefresh extends React.Component {
         };
 
         this._panResponder = PanResponder.create({
+            onStartShouldSetPanResponder: (evt, gestureState) => false,
             onMoveShouldSetPanResponder: () => !this.state.canScroll,
             onPanResponderMove: (evt, gestureState) => {
                 this.onDragging(evt, gestureState);
