@@ -1,7 +1,6 @@
 import React from "react";
 import {View, Text, ActivityIndicator, FlatList, PanResponder, Animated, Dimensions} from "react-native";
 import PropTypes from "prop-types";
-import {white} from "./styles/colors";
 import {styles} from "./styles/styles";
 
 const DRAGGING_SPEED = 10;
@@ -221,7 +220,7 @@ export class SpringPullToRefresh extends React.Component {
 
     render() {
         return(
-            <View testID={"ptr-container"} {...this._panResponder.panHandlers} style={styles.container}> /*TODO: cant click elements' buttons*/
+            <View testID={"ptr-container"} {...this._panResponder.panHandlers} style={styles.container}>
                 <FlatList
                     ref={ref => this.flatList = ref}
                     scrollEnabled={this.state.canScroll}
