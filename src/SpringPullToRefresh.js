@@ -222,7 +222,6 @@ export class SpringPullToRefresh extends React.Component {
         return(
             <View testID={"ptr-container"} {...this._panResponder.panHandlers} style={styles.container}>
                 <FlatList
-                    ref={ref => this.flatList = ref}
                     scrollEnabled={this.state.canScroll}
                     testID={"ptr-scroll-view"}
                     onScroll={({nativeEvent}) => this.onScroll(nativeEvent)}
