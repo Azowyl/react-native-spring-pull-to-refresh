@@ -12,6 +12,16 @@ export const styles = StyleSheet.create({
         alignSelf: "stretch"
     },
 
+    centered_row: {
+        flexDirection: "row",
+        justifyContent: "center"
+    },
+
+    absolute_pos: {
+        position: "absolute",
+        alignSelf: "center"
+    },
+
     /* COLORS */
     c_w: { color: white },
 
@@ -24,3 +34,11 @@ export const styles = StyleSheet.create({
     /* PADDING */
     pd_b_sm: { paddingBottom: 10 },
 });
+
+export const toOpacityStyle = (value) => {
+    return {opacity: value};
+};
+
+export const toHeightStyle = (value) => {
+    return { height: value};
+};
