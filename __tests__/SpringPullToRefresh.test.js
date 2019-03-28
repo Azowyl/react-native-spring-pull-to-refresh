@@ -225,6 +225,14 @@ describe("pull to refresh component", () => {
             const headerStyle = component.root.findByProps({testID: "ptr-header-container"}).props.style;
             expect(headerStyle.height).toBeTruthy();
         });
+
+        it ("should set activity indicator color to refreshing indicator color prop", () => {
+            const black = "#000000";
+            defaultProps.refreshingIndicatorColor = black;
+            const component = render(defaultProps);
+
+            expect(component.root.findByProps({testID: "ptr-activity-indicator"}).props.color).toEqual(black);
+        });
     });
 
     describe("scroll view component", () => {

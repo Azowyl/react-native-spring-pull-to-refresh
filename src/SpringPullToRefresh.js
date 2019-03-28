@@ -18,6 +18,7 @@ export class SpringPullToRefresh extends React.Component {
         defaultHeight: PropTypes.number,
         backgroundColor: PropTypes.string,
         textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+        refreshingIndicatorColor: PropTypes.string,
 
         /* TEXT */
         initialText: PropTypes.string.isRequired,
@@ -170,24 +171,28 @@ export class SpringPullToRefresh extends React.Component {
             textStyle = [styles.text_center, styles.h3, styles.c_w, styles.pd_b_sm, {...this.props.textStyle}];
         }
 
+        const {
+            refreshingIndicatorColor, backgroundColor, refreshing, releaseLeftIcon, releaseText, initialText, initialLeftIcon
+        } = this.props;
+
         return (
             <Animated.View
                 testID={"ptr-header-container"}
-                style={{height: this.state.height, justifyContent: "flex-end", backgroundColor: this.props.backgroundColor, paddingBottom: 10}}>
-                <ActivityIndicator color={white} testID={"ptr-activity-indicator"} style={{opacity: this.props.refreshing ? 1 : 0, paddingBottom: 10}}/>
-                { /*TODO: activity indicator's color should be customizable*/
-                    !this.props.refreshing &&
+                style={{height: this.state.height, justifyContent: "flex-end", backgroundColor: backgroundColor, paddingBottom: 10}}>
+                <ActivityIndicator color={refreshingIndicatorColor} testID={"ptr-activity-indicator"} style={{opacity: refreshing ? 1 : 0, paddingBottom: 10}}/>
+                {
+                    !refreshing &&
                     <View>
                         <Animated.View
                             testID={"ptr-animated-initialText"}
                             style={[{flexDirection: "row", justifyContent: "center", opacity: this.state.initialTextOpacity, position: "absolute", alignSelf: "center", paddingBottom: 10}]}>
-                            {this.props.initialLeftIcon}
-                            <Text style={textStyle} testID={"ptr-initialText"}>{this.props.initialText}</Text>
+                            {initialLeftIcon}
+                            <Text style={textStyle} testID={"ptr-initialText"}>{initialText}</Text>
                         </Animated.View>
 
                         <Animated.View style={{flexDirection: "row", justifyContent: "center", opacity: this.state.releaseTextOpacity}} testID={"ptr-animated-releaseText"}>
-                            {this.props.releaseLeftIcon}
-                            <Text style={textStyle} testID={"ptr-releaseText"}>{this.props.releaseText}</Text>
+                            {releaseLeftIcon}
+                            <Text style={textStyle} testID={"ptr-releaseText"}>{releaseText}</Text>
                         </Animated.View>
                     </View>
                 }
