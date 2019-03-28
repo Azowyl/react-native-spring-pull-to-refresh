@@ -86,10 +86,10 @@ describe("pull to refresh component", () => {
 
     describe("pull to refresh header", () => {
         it ("should set container height to height prop", () => {
-            const height = randomNumber();
-            const component = render({...defaultProps, height});
+            const defaultHeight = randomNumber();
+            const component = render({...defaultProps, defaultHeight});
 
-            expect(getHeaderContainerProps(component).style.height._value).toEqual(height);
+            expect(getHeaderContainerProps(component).style.height._value).toEqual(defaultHeight);
         });
 
         it ("should set background color prop to container style", () => {
@@ -199,8 +199,8 @@ describe("pull to refresh component", () => {
         });
 
         it ("should call onRefresh prop when releasing at max height", () => {
-            defaultProps.height = randomNumber();
-            defaultProps.maxHeight = defaultProps.height;
+            defaultProps.defaultHeight = randomNumber();
+            defaultProps.maxHeight = defaultProps.defaultHeight;
             defaultProps.onRefresh = jest.fn();
             const component = render(defaultProps);
 
@@ -217,6 +217,13 @@ describe("pull to refresh component", () => {
             getScrollViewProps(component).onScrollEndDrag();
 
             expect(getScrollViewProps(component).scrollEnabled).toBeFalsy();
+        });
+
+        it ("should have a default height", () => {
+            defaultProps.defaultHeight = undefined;
+            const component = render(defaultProps);
+            const headerStyle = component.root.findByProps({testID: "ptr-header-container"}).props.style;
+            expect(headerStyle.height).toBeTruthy();
         });
     });
 

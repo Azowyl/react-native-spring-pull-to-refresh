@@ -8,12 +8,13 @@ const DRAGGING_SPEED = 10;
 const TOP_POSITION = 0;
 const ANIMATION_SPEED = 15;
 const DRAGGING_TOLERANCE = 5;
+const DEFAULT_HEADER_HEIGHT = 50;
 const { height } = Dimensions.get("window");
 
 export class SpringPullToRefresh extends React.Component {
     static propTypes = {
         /* STYLE */
-        height: PropTypes.number, //TODO: provide default value
+        defaultHeight: PropTypes.number,
         backgroundColor: PropTypes.string,
         textStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 
@@ -48,7 +49,7 @@ export class SpringPullToRefresh extends React.Component {
         };
 
         this._panResponder = PanResponder.create({
-            onStartShouldSetPanResponder: (evt, gestureState) => false,
+            onStartShouldSetPanResponder: () => false,
             onMoveShouldSetPanResponder: () => !this.state.canScroll,
             onPanResponderMove: (evt, gestureState) => {
                 this.onDragging(evt, gestureState);
@@ -61,12 +62,16 @@ export class SpringPullToRefresh extends React.Component {
     }
 
     componentDidMount = () => {
-        this.state.height.setValue(this.props.height);
-        this.setState({enoughElementsToScroll: this.props.data.length > 0})
+        this.state.height.setValue(this.getDefaultHeight());
+        this.setState({enoughElementsToScroll: this.props.data.length > 0});
     };
 
     getHeight = () => {
         return this.state.height._value;
+    };
+
+    getDefaultHeight = () => {
+        return this.props.defaultHeight ? this.props.defaultHeight : DEFAULT_HEADER_HEIGHT;
     };
 
     getMaxHeight = () => {
@@ -140,7 +145,7 @@ export class SpringPullToRefresh extends React.Component {
         Animated.spring(
             this.state.height,
             {
-                toValue: this.props.height,
+                toValue: this.getDefaultHeight(),
                 speed: ANIMATION_SPEED
             }
         ).start();
