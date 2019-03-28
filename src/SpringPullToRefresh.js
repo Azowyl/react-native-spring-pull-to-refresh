@@ -9,6 +9,7 @@ const TOP_POSITION = 0;
 const ANIMATION_SPEED = 15;
 const DRAGGING_TOLERANCE = 5;
 const DEFAULT_HEADER_HEIGHT = 50;
+const DEFAULT_MAX_HEIGHT = 150;
 const { height } = Dimensions.get("window");
 
 export class SpringPullToRefresh extends React.Component {
@@ -75,7 +76,7 @@ export class SpringPullToRefresh extends React.Component {
     };
 
     getMaxHeight = () => {
-        return this.props.maxHeight; //TODO: this prop is not required, so...
+        return this.props.maxHeight ? this.props.maxHeight : DEFAULT_MAX_HEIGHT;
     };
 
     getDraggingSpeed = () => {
